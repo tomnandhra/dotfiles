@@ -1,0 +1,207 @@
+# set modifier
+set $mod Mod4
+
+# draggable windows
+floating_modifier $mod
+
+# set font
+font pango:monospace 8
+
+# set colours
+set $bg-color 	         #ffffff
+set $inactive-bg-color   #515151
+set $text-color          #f3f4f5
+set $inactive-text-color #1c1924
+set $urgent-bg-color     #000000
+set $indicator		 #fff
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          $indicator
+client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color $indicator
+client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color $indicator
+client.urgent $urgent-bg-color $urgent-bg-color $text-color $indicator
+
+# set borders
+default_border pixel 2
+
+# set workspaces
+set $ws1 ""
+set $ws2 ""
+set $ws3 ""
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# change focus
+bindsym Mod1+h focus left
+bindsym Mod1+l focus right
+bindsym Mod1+k focus up
+bindsym Mod1+j focus down
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+# toggle focus between floating and tiling
+bindsym $mod+space focus mode_toggle
+
+# move focused windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# split
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# fullscreen
+bindsym $mod+f fullscreen toggle
+
+# floating
+bindsym $mod+Shift+space floating toggle
+
+# resize mode
+mode "resize" {
+	bindsym h resize shrink width 10 px or 10ppt
+	bindsym l resize grow width 10 px or 10ppt
+	bindsym k resize grow height 10 px or 10ppt
+	bindsym j resize shrink height 10 px or 10ppt
+	bindsym Left resize shrink width 10 px or 10ppt
+	bindsym Right resize grow width 10 px or 10ppt
+	bindsym Up resize grow height 10 px or 10ppt
+	bindsym Down resize shrink height 10 px or 10ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+# gaps
+gaps inner 15
+gaps outer 5
+#smart_borders true
+
+# gaps mode
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+# open terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill window
+bindsym $mod+Shift+q kill
+
+# reload i3 config
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# exit i3
+# bar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# rofi
+bindsym Mod1+space exec rofi -show drun -theme mytheme
+
+# set keyboard layout
+exec setxkbmap gb
+
+# reload Xresources
+exec_always xrdb ~/.Xresources
+
+# volume keys
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+bindsym XF86AudioMute exec pulseaudio-ctl mute
+
+# brightness keys
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+# media keys
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# set wallpaper
+#exec_always --no-startup-id hsetroot -tile ~/Pictures/Wallpapers/tile.jpg -tint \#2AA198 -contrast 0.95
+exec_always --no-startup-id hsetroot -tile ~/Pictures/texture.jpg -tint "#1d1f27" -contrast 1.1
+
+
+
+
+# autostart programs:
+#exec_always --no-startup-id nm-applet &
+exec_always --no-startup-id compton --config ~/.config/compton/config
