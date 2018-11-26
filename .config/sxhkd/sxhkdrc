@@ -1,0 +1,14 @@
+super + {Up, Down}
+	light -{A,U} 5
+
+XF86AudioRaiseVolume
+	pulseaudio-ctl up
+
+XF86AudioLowerVolume
+	pulseaudio-ctl down
+
+alt + space
+	rofi -show drun -theme mytheme
+
+super + Return
+	urxvt
