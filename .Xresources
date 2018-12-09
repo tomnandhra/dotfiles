@@ -1,23 +1,64 @@
-URxvt.font:xft:t cherry 
+! Colorscheme
+#define baseBG #282A36
+#define baseFG #F8F8F2
+#define baseCC #A2A4AD
+#define base00 #000000
+#define base01 #FF5555
+#define base02 #50FA7B
+#define base03 #F1FA8C
+#define base04 #BD93F9
+#define base05 #FF79C6
+#define base06 #8BE9FD
+#define base07 #BFBFBF
+#define base08 #4D4D4D
+#define base09 #FF6E67
+#define base10 #5AF97E
+#define base11 #F4F99D
+#define base12 #CAA9FA
+#define base13 #FF92D0
+#define base14 #9AEDFE
+#define base15 #E6E6E6
+
+! Set URxvt Colorscheme
+URxvt.cursorColor:baseCC
+URxvt.background:baseBG
+URxvt.foreground:baseFG
+URxvt.color0:base00
+URxvt.color1:base01
+URxvt.color2:base02
+URxvt.color3:base03
+URxvt.color4:base04
+URxvt.color5:base05
+URxvt.color6:base06
+URxvt.color7:base07
+URxvt.color8:base08
+URxvt.color9:base09
+URxvt.color10:base10
+URxvt.color11:base11
+URxvt.color12:base12
+URxvt.color13:base13
+URxvt.color14:base14
+URxvt.color15:base15
+
+! URxvt Settings
+URxvt.font:xft:t cherry
 URxvt.scrollBar: false
 URxvt.internalBorder:  30
 
-! Dracula Xresources palette
-*.foreground: #F8F8F2
-*.background: #282A36
-*.color0:     #000000
-*.color8:     #4D4D4D
-*.color1:     #FF5555
-*.color9:     #FF6E67
-*.color2:     #50FA7B
-*.color10:    #5AF78E
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
-*.color4:     #BD93F9
-*.color12:    #CAA9FA
-*.color5:     #FF79C6
-*.color13:    #FF92D0
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
-*.color7:     #BFBFBF
-*.color15: #E6E6E6
+! ROFI Settings
+rofi.font:t cherry 15
+rofi.kb-row-up:                      Up,Control+k,Control+K,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:                    Down,Control+j,Control+J
+rofi.kb-accept-entry:                Control+m,Return,KP_Enter
+rofi.terminal:                       urxvt
+rofi.kb-remove-to-eol:               Control+Shift+e
+rofi.kb-mode-next:                   Shift+Right,Control+Tab,Control+l
+rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Control+h
+rofi.kb-remove-char-back: BackSpace
+
+! ROFI theme
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
