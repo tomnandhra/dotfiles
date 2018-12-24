@@ -1,5 +1,6 @@
 ! Colorscheme
-#define baseBG #282A36
+! #define baseBG #282A36
+#define baseBG #000000
 #define baseFG #F8F8F2
 #define baseCC #A2A4AD
 #define base00 #000000
@@ -58,7 +59,7 @@ rofi.kb-remove-char-back: BackSpace
 
 ! ROFI theme
 rofi.color-enabled: true
-rofi.color-window: #273238, #273238, #1e2529
-rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
-rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
-rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+rofi.color-window: baseBG, base06, baseBG
+rofi.color-normal: baseBG, baseFG, #242530, baseFG, baseBG
+rofi.color-active: base01, baseFG, base01, baseFG, baseFG
+rofi.color-urgent: baseBG, baseBG, baseBG, baseBG, baseBG

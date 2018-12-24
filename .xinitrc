@@ -5,6 +5,8 @@ hsetroot -tile ~/Pictures/texture.jpg -tint "#1d1f27" -contrast 1.1 &
 
 # load Xresources
 xrdb -load ~/.Xresources &
+xrdb -merge ~/.Xresources &
+xrdb ~/.Xresources &
 
 # set keyboard layout
 setxkbmap gb &
@@ -29,4 +31,4 @@ sxhkd &
 urxvt &
 
 # start window manager
-exec 2bwm
+exec i3
